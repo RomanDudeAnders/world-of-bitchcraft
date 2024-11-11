@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World of Bitchcraft</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>World of Bitchcraft</h1>
+    <div id="creator">
+        <label>Wähle die Hunderasse:
+            <select id="breedSelect">
+                <option value="Golden Retriever">Golden Retriever</option>
+                <option value="Bulldog">Bulldog</option>
+                <option value="Dachshund">Dachshund</option>
+                <option value="Poodle">Poodle</option>
+                <option value="German Shepherd">German Shepherd</option>
+            </select>
+        </label>
+        
+        <label>Wähle die Fellfarbe:
+            <input type="color" id="colorPicker" value="#ffcc99">
+        </label>
+
+        <label>Name deines Hundes:
+            <input type="text" id="dogName" placeholder="Gib dem Hund einen Namen">
+        </label>
+
+        <!-- Buttons to assemble body parts -->
+        <label>Kopf:
+            <select id="headSelect">
+                <option value="default">Standard</option>
+                <option value="fluffy">Flauschig</option>
+                <option value="long nose">Lange Nase</option>
+            </select>
+        </label>
+        <label>Körper:
+            <select id="bodySelect">
+                <option value="default">Standard</option>
+                <option value="muscular">Muskulös</option>
+                <option value="slim">Schlank</option>
+            </select>
+        </label>
+        <label>Beine:
+            <select id="legsSelect">
+                <option value="default">Standard</option>
+                <option value="short">Kurz</option>
+                <option value="long">Lang</option>
+            </select>
+        </label>
+
+        <button onclick="createDog()">Hund erstellen</button>
+    </div>
+
+    <div id="dogDisplay">
+        <h2 id="displayDogName"></h2>
+        <div id="dogImage">
+            <!-- Hier wird das zusammengestellte Bild angezeigt -->
+        </div>
+        <p id="ratingDisplay"></p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
