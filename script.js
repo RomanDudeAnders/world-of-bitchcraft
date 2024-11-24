@@ -2,7 +2,7 @@
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
 
-// Grundfunktionen für die Anzeige
+// Grundfunktionen für Zeichnen
 function drawText(text, x, y, font = "20px Arial", color = "black") {
   ctx.font = font;
   ctx.fillStyle = color;
@@ -14,7 +14,7 @@ function clearCanvas() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
 
-// Willkommensseite
+// Erste Seite
 function drawWelcomeScreen() {
   clearCanvas();
   drawText("Willkommen bei", canvas.width / 2, 100, "30px Arial", "black");
@@ -27,7 +27,7 @@ function drawWelcomeScreen() {
   drawText("NEIN, ICH BIN NOCH EIN KIND", canvas.width / 2, 400, "bold 20px Arial", "red");
 }
 
-// Eingabefunktion für die Buttons
+// Interaktive Klicks
 canvas.addEventListener("click", (event) => {
   const rect = canvas.getBoundingClientRect();
   const x = event.clientX - rect.left;
@@ -42,7 +42,7 @@ canvas.addEventListener("click", (event) => {
   }
 });
 
-// Weitere Bildschirme
+// Weitere Seiten
 function drawAdultScreen() {
   clearCanvas();
   drawText("Wirklich? So siehst du gar nicht aus!", canvas.width / 2, 150);
@@ -52,7 +52,6 @@ function drawAdultScreen() {
   drawText("JETZT HUND ERSTELLEN", canvas.width / 2, 400, "bold 20px Arial", "blue");
 }
 
-// Für Kinder
 function drawChildScreen() {
   clearCanvas();
   drawText("Achso, du bist noch gar nicht erwachsen?", canvas.width / 2, 150);
@@ -61,5 +60,5 @@ function drawChildScreen() {
   drawText("JETZT HUND ERSTELLEN", canvas.width / 2, 400, "bold 20px Arial", "blue");
 }
 
-// Starte das Spiel
+// Startseite zeichnen
 drawWelcomeScreen();
