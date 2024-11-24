@@ -1,60 +1,45 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const pages = document.querySelectorAll(".page");
-    const welcomePage = document.getElementById("welcomePage");
-    const over18Page = document.getElementById("over18Page");
-    const under18Page = document.getElementById("under18Page");
-    const createDogPage = document.getElementById("createDogPage");
-    const dogResult = document.getElementById("dogResult");
-  
-    // Navigation
-    document.getElementById("yesOver18").addEventListener("click", () => {
-      switchPage(over18Page);
-    });
-  
-    document.getElementById("noUnder18").addEventListener("click", () => {
-      switchPage(under18Page);
-    });
-  
-    document.getElementById("createDogBtnFromOver18").addEventListener("click", () => {
-      switchPage(createDogPage);
-    });
-  
-    document.getElementById("createDogBtnFromUnder18").addEventListener("click", () => {
-      switchPage(createDogPage);
-    });
-  
-    // Generate Dog
-    document.getElementById("generateDog").addEventListener("click", () => {
-      const breed = document.getElementById("breed").value;
-      const color = document.getElementById("color").value;
-      const personality = document.getElementById("personality").value;
-      const name = document.getElementById("dogName").value.trim();
-  
-      if (name === "") {
-        alert("Bitte gib einen Namen für deinen Hund ein!");
-        return;
-      }
-  
-      const dogImage = getDogImage(breed, color, personality);
-      document.getElementById("dogImage").src = dogImage;
-      document.getElementById("dogNameDisplay").textContent = name;
-      dogResult.classList.remove("hidden");
-  
-      const stars = Math.ceil(Math.random() * 10);
-      document.getElementById("bitchBaronRating").textContent = `Bitchbaron69 vergibt: ${stars} Sterne!`;
-    });
-  
-    document.getElementById("newDogBtn").addEventListener("click", () => {
-      location.reload();
-    });
-  
-    function switchPage(pageToShow) {
-      pages.forEach(page => page.classList.add("hidden"));
-      pageToShow.classList.remove("hidden");
-    }
-  
-    function getDogImage(breed, color, personality) {
-      return `images/${breed}_${color}_${personality}.png`;
-    }
-  });
-  
+// Funktionen zur Navigation zwischen den Seiten
+function showPage(pageId) {
+  // Alle Seiten verstecken
+  document.querySelectorAll("div").forEach(page => page.style.display = "none");
+  // Gewünschte Seite anzeigen
+  document.getElementById(pageId).style.display = "block";
+}
+
+// Buttons für die Willkommensseite
+document.getElementById("btnAdult").addEventListener("click", () => showPage("adultPage"));
+document.getElementById("btnChild").addEventListener("click", () => showPage("childPage"));
+
+// Buttons für die Erwachsenen-/Kind-Seite
+document.getElementById("btnCreateDogAdult").addEventListener("click", () => showPage("dogCreationPage"));
+document.getElementById("btnCreateDogChild").addEventListener("click", () => showPage("dogCreationPage"));
+
+// Button zum Hund erstellen
+document.getElementById("btnCreateDog").addEventListener("click", () => {
+  const breed = document.getElementById("dogBreed").value;
+  const color = document.getElementById("dogColor").value;
+  const character = document.getElementById("dogCharacter").value;
+  const name = document.getElementById("dogName").value || "No-Name";
+
+  // Zeige die Ergebnisse an
+  showPage("resultPage");
+  document.getElementById("dogDisplayName").innerText = name;
+
+  // Zufällige Bewertung
+  const stars = "⭐".repeat(Math.floor(Math.random() * 5) + 1);
+  document.getElementById("dogRating").innerText = `Bewertung: ${stars}`;
+});
+
+// Button für Feedback
+document.getElementById("btnWhyLowStars").addEventListener("click", () => {
+  const feedbackTexts = [
+    "Beginnen wir mit den Augen deines Hundes. Sie sind wirklich wunderschön!",
+    "Das Fell sieht richtig schön flauschig aus.",
+    "Netter Schwanz, aber ist der nicht vielleicht ein bisschen klein?"
+  ];
+  const randomFeedback = feedbackTexts[Math.floor(Math.random() * feedbackTexts.length)];
+  document.getElementById("feedback").innerText = randomFeedback;
+});
+
+// Button zum Neustart
+document.getElementById("btnRestart").addEventListener("click", () => showPage("dogCreationPage"));
