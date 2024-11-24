@@ -1,45 +1,65 @@
-// Funktionen zur Navigation zwischen den Seiten
-function showPage(pageId) {
-  // Alle Seiten verstecken
-  document.querySelectorAll("div").forEach(page => page.style.display = "none");
-  // Gewünschte Seite anzeigen
-  document.getElementById(pageId).style.display = "block";
+// Initialisierung des Canvas
+const canvas = document.getElementById("gameCanvas");
+const ctx = canvas.getContext("2d");
+
+// Grundfunktionen für die Anzeige
+function drawText(text, x, y, font = "20px Arial", color = "black") {
+  ctx.font = font;
+  ctx.fillStyle = color;
+  ctx.textAlign = "center";
+  ctx.fillText(text, x, y);
 }
 
-// Buttons für die Willkommensseite
-document.getElementById("btnAdult").addEventListener("click", () => showPage("adultPage"));
-document.getElementById("btnChild").addEventListener("click", () => showPage("childPage"));
+function clearCanvas() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+}
 
-// Buttons für die Erwachsenen-/Kind-Seite
-document.getElementById("btnCreateDogAdult").addEventListener("click", () => showPage("dogCreationPage"));
-document.getElementById("btnCreateDogChild").addEventListener("click", () => showPage("dogCreationPage"));
+// Willkommensseite
+function drawWelcomeScreen() {
+  clearCanvas();
+  drawText("Willkommen bei", canvas.width / 2, 100, "30px Arial", "black");
+  drawText("WORLD OF BITCHCRAFT", canvas.width / 2, 150, "bold 40px Arial", "darkred");
+  drawText("Hallo lieber Hundefreund. Hier kannst du deinen", canvas.width / 2, 220);
+  drawText("eigenen digitalen Hund erstellen! Worauf wartest du noch?", canvas.width / 2, 250);
 
-// Button zum Hund erstellen
-document.getElementById("btnCreateDog").addEventListener("click", () => {
-  const breed = document.getElementById("dogBreed").value;
-  const color = document.getElementById("dogColor").value;
-  const character = document.getElementById("dogCharacter").value;
-  const name = document.getElementById("dogName").value || "No-Name";
+  // Buttons
+  drawText("JA, ICH BIN ÜBER 18", canvas.width / 2, 350, "bold 20px Arial", "green");
+  drawText("NEIN, ICH BIN NOCH EIN KIND", canvas.width / 2, 400, "bold 20px Arial", "red");
+}
 
-  // Zeige die Ergebnisse an
-  showPage("resultPage");
-  document.getElementById("dogDisplayName").innerText = name;
+// Eingabefunktion für die Buttons
+canvas.addEventListener("click", (event) => {
+  const rect = canvas.getBoundingClientRect();
+  const x = event.clientX - rect.left;
+  const y = event.clientY - rect.top;
 
-  // Zufällige Bewertung
-  const stars = "⭐".repeat(Math.floor(Math.random() * 5) + 1);
-  document.getElementById("dogRating").innerText = `Bewertung: ${stars}`;
+  if (y > 330 && y < 370) {
+    console.log("Button 'Ja' geklickt");
+    drawAdultScreen();
+  } else if (y > 380 && y < 420) {
+    console.log("Button 'Nein' geklickt");
+    drawChildScreen();
+  }
 });
 
-// Button für Feedback
-document.getElementById("btnWhyLowStars").addEventListener("click", () => {
-  const feedbackTexts = [
-    "Beginnen wir mit den Augen deines Hundes. Sie sind wirklich wunderschön!",
-    "Das Fell sieht richtig schön flauschig aus.",
-    "Netter Schwanz, aber ist der nicht vielleicht ein bisschen klein?"
-  ];
-  const randomFeedback = feedbackTexts[Math.floor(Math.random() * feedbackTexts.length)];
-  document.getElementById("feedback").innerText = randomFeedback;
-});
+// Weitere Bildschirme
+function drawAdultScreen() {
+  clearCanvas();
+  drawText("Wirklich? So siehst du gar nicht aus!", canvas.width / 2, 150);
+  drawText("Schön, dass du schon so alt und auch geistig gereift bist.", canvas.width / 2, 200);
+  drawText("Dann darfst du ja auch schon ein Nussschnäpschen trinken.", canvas.width / 2, 250);
+  drawText("Nimm hin! Prost!", canvas.width / 2, 300);
+  drawText("JETZT HUND ERSTELLEN", canvas.width / 2, 400, "bold 20px Arial", "blue");
+}
 
-// Button zum Neustart
-document.getElementById("btnRestart").addEventListener("click", () => showPage("dogCreationPage"));
+// Für Kinder
+function drawChildScreen() {
+  clearCanvas();
+  drawText("Achso, du bist noch gar nicht erwachsen?", canvas.width / 2, 150);
+  drawText("Macht nix, dieses Spiel ist komplett jugendfrei!", canvas.width / 2, 200);
+  drawText("Na los, ein kleiner, digitaler Wuffi wartet nur darauf, von dir gebastelt zu werden!", canvas.width / 2, 250);
+  drawText("JETZT HUND ERSTELLEN", canvas.width / 2, 400, "bold 20px Arial", "blue");
+}
+
+// Starte das Spiel
+drawWelcomeScreen();

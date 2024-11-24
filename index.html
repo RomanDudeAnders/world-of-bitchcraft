@@ -1,89 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>World of Bitchcraft</title>
-  <link rel="stylesheet" href="style.css">
+  <style>
+    canvas {
+      display: block;
+      margin: 0 auto;
+      background-color: #f0f8ff; /* Ein sanftes Blau als Hintergrund */
+    }
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+    }
+  </style>
 </head>
 <body>
-  <div id="app">
-    <!-- Willkommensseite -->
-    <div id="welcomePage" class="page">
-      <h1>Willkommen bei</h1>
-      <h2>World of Bitchcraft</h2>
-      <p>Hallo lieber Hundefreund. Hier kannst du deinen eigenen digitalen Hund erstellen! Worauf wartest du noch?</p>
-      <p><b>Bist du schon über 18?</b></p>
-      <button id="yesOver18">Ja, ich bin über 18</button>
-      <button id="noUnder18">Nein, ich bin noch ein Kind</button>
-    </div>
-
-    <!-- Über 18-Seite -->
-    <div id="over18Page" class="page hidden">
-      <h2>Wirklich? So siehst du gar nicht aus!</h2>
-      <p>Schön, dass du schon so alt und auch geistig gereift bist. Dann darfst du ja auch schon ein Nussschnäpschen trinken. Nimm hin! Prost!</p>
-      <button id="createDogBtnFromOver18">Jetzt Hund erstellen</button>
-    </div>
-
-    <!-- Unter 18-Seite -->
-    <div id="under18Page" class="page hidden">
-      <h2>Achso, du bist noch gar nicht erwachsen?</h2>
-      <p>Macht nix, dieses Spiel ist komplett jugendfrei! Na los, ein kleiner, digitaler Wuffi wartet nur darauf, von dir gebastelt zu werden!</p>
-      <button id="createDogBtnFromUnder18">Jetzt Hund erstellen</button>
-    </div>
-
-    <!-- Hund erstellen-Seite -->
-    <div id="createDogPage" class="page hidden">
-      <h1>World of Bitchcraft</h1>
-      <p>Jetzt geht’s los! Bastle deinen Traumhund mit ein paar einfachen Klicks. Du hast unzählige Möglichkeiten, Charakter und Aussehen ganz nach deinem Geschmack zu gestalten.</p>
-      
-      <div>
-        <label>Wähle die Hunderasse:</label>
-        <select id="breed">
-          <option value="poodle">Pudel</option>
-          <option value="german_shepherd">Deutscher Schäferhund</option>
-          <option value="chihuahua">Chihuahua</option>
-          <option value="dachshund">Dackel</option>
-          <option value="pug">Mops</option>
-        </select>
-      </div>
-
-      <div>
-        <label>Welche Fellfarbe soll dein Hund haben?</label>
-        <select id="color">
-          <option value="brown">Braun</option>
-          <option value="white">Weiß</option>
-          <option value="pink">Rosa</option>
-        </select>
-      </div>
-
-      <div>
-        <label>Welchen Charakter hat dein Hund?</label>
-        <select id="personality">
-          <option value="loving">Liebevoll</option>
-          <option value="aggressive">Kämpferisch</option>
-          <option value="funny">Lustig</option>
-        </select>
-      </div>
-
-      <div>
-        <label>Wie soll dein Hund heißen?</label>
-        <input type="text" id="dogName" placeholder="Hundename">
-      </div>
-
-      <button id="generateDog">Hund erstellen</button>
-
-      <div id="dogResult" class="hidden">
-        <h2>Das ist dein neuer Lieblingshund: <span id="dogNameDisplay"></span></h2>
-        <img id="dogImage" src="" alt="Dein Hund">
-        <p id="bitchBaronRating"></p>
-        <button id="whyFewStars">Hey, warum nur so wenige Sterne?</button>
-        <div id="baronFeedback"></div>
-        <button id="newDogBtn">Neuen Hund erstellen</button>
-      </div>
-    </div>
-  </div>
-
+  <canvas id="gameCanvas" width="800" height="600"></canvas>
   <script src="script.js"></script>
 </body>
 </html>
