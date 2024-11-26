@@ -1,50 +1,62 @@
+/* style.css */
+
+/* Allgemeine Stile für die Seiten */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f3f3f3;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  
-  .page {
-    display: none;
-    text-align: center;
-  }
-  
-  .page h1 {
-    font-size: 2.5rem;
-    color: #4b0082;
-  }
-  
-  .page h2 {
-    font-size: 2rem;
-    color: #800080;
-  }
-  
-  .page p {
-    font-size: 1.2rem;
-    margin: 10px 0;
-  }
-  
-  button {
-    padding: 10px 20px;
-    font-size: 1rem;
-    margin: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    background-color: #4b0082;
-    color: white;
-  }
-  
-  button:hover {
-    background-color: #800080;
-  }
-  
-  .hidden {
-    display: none;
-  }
-  
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background-color: #f5f5f5;
+}
+
+h1, h2 {
+  color: #2c3e50;
+}
+
+#welcome-page, #age-confirmation, #dog-creation, #dog-result {
+  display: block;
+  padding: 20px;
+}
+
+button {
+  padding: 10px;
+  font-size: 16px;
+  margin: 10px;
+  cursor: pointer;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #2980b9;
+}
+
+/* Stil für die Hundewahl */
+#dog-creation select, #dog-creation input {
+  padding: 10px;
+  font-size: 16px;
+  margin: 10px;
+  width: 80%;
+  border-radius: 5px;
+}
+
+/* Stil für die Bewertung und Ergebnisse */
+#dog-result {
+  display: block;
+}
+
+#dog-result img {
+  width: 200px;
+  height: auto;
+  margin-top: 10px;
+}
+
+#dog-review {
+  display: none;
+  margin-top: 20px;
+}
+
+#new-dog {
+  display: none;
+  margin-top: 30px;
+}

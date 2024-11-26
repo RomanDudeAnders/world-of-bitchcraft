@@ -1,24 +1,76 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>World of Bitchcraft</title>
-  <style>
-    canvas {
-      display: block;
-      margin: 0 auto;
-      background-color: #f0f8ff; /* Ein sanftes Blau als Hintergrund */
-    }
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      margin: 0;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World of Bitchcraft</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <canvas id="gameCanvas" width="800" height="600"></canvas>
-  <script src="script.js"></script>
+
+    <!-- Willkommensseite -->
+    <div id="welcome-page">
+        <h1>Willkommen bei</h1>
+        <h2>WORLD OF BITCHCRAFT</h2>
+        <p>Hallo lieber Hundefreund! Hier kannst du deinen eigenen Hund erstellen und ihm Leben einhauchen! Bist du bereit, deinen Hund zu erschaffen?</p>
+        <p><strong>Bist du schon über 18?</strong></p>
+        <button onclick="showAgeConfirmation(true)">Ja, ich bin über 18</button>
+        <button onclick="showAgeConfirmation(false)">Nein, ich bin noch ein Kind</button>
+    </div>
+
+    <!-- Altersbestätigung -->
+    <div id="age-confirmation" style="display:none;">
+        <p id="age-confirmation-text"></p>
+        <button onclick="startDogCreation()">Jetzt Hund erstellen</button>
+    </div>
+
+    <!-- Hund erstellen -->
+    <div id="dog-creation" style="display:none;">
+        <h1>World of Bitchcraft</h1>
+        <p>Jetzt geht’s los! Bastle deinen Traumhund mit ein paar einfachen Klicks. Du hast unzählige Möglichkeiten, Charakter und Aussehen ganz nach deinem Geschmack zu gestalten.</p>
+
+        <label for="breed">Wähle die Hunderasse:</label>
+        <select id="breed">
+            <option value="Pudel">Pudel</option>
+            <option value="Deutscher Schäferhund">Deutscher Schäferhund</option>
+            <option value="Chihuahua">Chihuahua</option>
+            <option value="Dackel">Dackel</option>
+            <option value="Mops">Mops</option>
+        </select>
+
+        <label for="fur-color">Welche Fellfarbe soll dein Hund haben?</label>
+        <select id="fur-color">
+            <option value="braun">Braun</option>
+            <option value="weiß">Weiß</option>
+            <option value="rosa">Rosa</option>
+        </select>
+
+        <label for="character">Welchen Charakter hat dein Hund?</label>
+        <select id="character">
+            <option value="liebevoll">Liebevoll</option>
+            <option value="kämpferisch">Kämpferisch</option>
+            <option value="lustig">Lustig</option>
+        </select>
+
+        <label for="name">Wie soll dein Hund heißen?</label>
+        <input type="text" id="name" placeholder="Gib den Namen deines Hundes ein">
+
+        <button onclick="createDog()">Hund erstellen</button>
+    </div>
+
+    <!-- Ergebnis Seite -->
+    <div id="dog-result" style="display:none;">
+        <h1>Das ist dein neuer Lieblingshund</h1>
+        <p id="dog-name"></p>
+        <img id="dog-image" src="" alt="Dein Hund" onerror="handleImageError(this)">
+        <p id="dog-rating"></p>
+        <button id="why-low-stars" onclick="generateReview()">Hey, warum nur so wenige Sterne?</button>
+        <div id="dog-review" style="display:none;"></div>
+    </div>
+
+    <!-- Neuen Hund erstellen -->
+    <button id="new-dog" onclick="newDog()" style="display:none;">Neuen Hund erstellen</button>
+
+    <script src="script.js"></script>
 </body>
 </html>
