@@ -90,7 +90,7 @@ function generateReview() {
     ];
 
     const noseComments = [
-        "Die Schnauze deines Hundes ich auf jeden Fall Party! Beiß mich, Bello! Wau Wau!",
+        "Die Schnauze deines Hundes ist auf jeden Fall Party! Beiß mich, Bello! Wau Wau!",
         "Und schauen wir uns doch mal die Schnauze deines Hundes im Detail an. So, angeschaut. Du auch? Also mehr muss man dazu auch nicht sagen, oder?",
         "Ooooooh, und was für eine zuckersüße Hundeschnauze dein Wuffilein hat! Ich habe schon dreimal versucht ihn zu füttern, und jedes Mal ist mir hinterher aufgefallen, dass der Hund ja nur digital auf dem Bildschirm existiert. Ich muss mal eben Zewa holen, Sekunde…",
         "Halt die Schnauze – sowas sollte man nicht sagen, das wäre ja frech. Die Schnauze deines Hundes halte ich aber für gelungen.",
